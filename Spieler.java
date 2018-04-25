@@ -1,19 +1,51 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class Spieler here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import greenfoot.*;
 public class Spieler extends Actor
-{
-    /**
-     * Act - do whatever the Spieler wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+{    
     public void act() 
     {
-        // Add your action code here.
-    }    
+        if(Greenfoot.isKeyDown("a") == true)
+        {
+            moveLeft();
+        }
+        if(Greenfoot.isKeyDown("d") == true)
+        {
+            moveRight();
+        }
+        if(Greenfoot.isKeyDown("w") == true)
+        {
+            moveUp();
+        }
+        if(Greenfoot.isKeyDown("s") == true)
+        {
+            moveDown();
+        }
+    }
+    public void moveLeft()
+    {
+        if (getOneObjectAtOffset(-1, 0, Hindernis.class) == null)
+        {
+            setLocation(getX()-1,getY());
+        }
+    }
+    public void moveRight()
+    {
+        if (getOneObjectAtOffset(1, 0, Hindernis.class) == null)
+        {
+            setLocation(getX()+1,getY());
+        }
+    }
+    public void moveUp()
+    {
+        if (getOneObjectAtOffset(0, -1, Hindernis.class) == null)
+        {
+            setLocation(getX(),getY()-1);
+        }
+    }
+    public void moveDown()
+    {
+        if (getOneObjectAtOffset(0, 1, Hindernis.class) == null)
+        {
+            setLocation(getX(),getY()+1);
+        }
+    }
 }

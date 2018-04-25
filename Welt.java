@@ -5,6 +5,6 @@ public class Welt extends World
 
     public Welt()
     {    
-        super(8, 8, 50); 
+        super(100, 100, 5); 
     }
 }
