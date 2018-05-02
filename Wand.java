@@ -3,7 +3,7 @@ public class Wand extends Hindernis
 {
     public Wand()
     {
-        getImage().scale(51, 51);
+        getImage().scale(50, 50);
     }
     public void act() 
     {
