@@ -1,50 +1,33 @@
-import greenfoot.*;
-public class Spieler extends Actor
-{   
-    private int leben;
-    public Spieler()
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+public class Gegner extends Actor
+{
+    int leben;
+    public Gegner()
     {
-        leben = 3;
+        leben = 1;
         getImage().scale(50, 50);
     }
     public void act() 
     {
-        if(Greenfoot.isKeyDown("a") == true)
+        int r = Greenfoot.getRandomNumber(5);
+        if(r == 1)
         {
             moveLeft();
         }
-        if(Greenfoot.isKeyDown("d") == true)
+        else if(r == 2)
         {
-            if (getX() == 9)
-            {
-                Greenfoot.setWorld(new Raum2());
-            }
-            else
-            {
-                moveRight();
-            }           
+            moveRight();
         }
-        if(Greenfoot.isKeyDown("w") == true)
+        else if(r == 3)
         {
             moveUp();
         }
-        if(Greenfoot.isKeyDown("s") == true)
+        else if(r == 4)
         {
             moveDown();
         }
-        /*if(isTouching(Gegner.class) == true)
-        {
-            Aufgabe();
-        }*/
-    }
-    public void setLeben(int l)
-    {
-        leben = l;
-    }
-    public int getLeben()
-    {
-        return leben;
-    }
+        
+    }    
     public void moveLeft()
     {
         if (getOneObjectAtOffset(-1, 0, Hindernis.class) == null)
