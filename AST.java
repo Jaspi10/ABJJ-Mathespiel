@@ -1,3 +1,5 @@
+import java.util.Random;
+
 //Stellt eine arithmetische Aufgabe dar
 public class AST  
 {
@@ -12,21 +14,9 @@ public class AST
     //TODO: Zufall
     public static AST generiereAST() 
     {
-        KnotenZahl sieben = new KnotenZahl(7.0);
-        KnotenZahl fuenf = new KnotenZahl(5.0);
-        
-        KnotenOperation plus = new KnotenOperation(fuenf, sieben, EOperation.ADDITION);
-        
-        KnotenZahl zehn = new KnotenZahl(10.0);
-        
-        KnotenOperation mal = new KnotenOperation(zehn, plus, EOperation.MULTIPLIKATION);
-        
-        KnotenZahl zwanzig = new KnotenZahl(20.0);
-        
-        KnotenOperation plus2 = new KnotenOperation(zwanzig, mal, EOperation.ADDITION);
-        
-        System.out.println(plus2.auswerten());
-        
-        return new AST(plus2);
+        Random r = new Random();
+        AST ast = new AST(KnotenOperation.generiere(r, 2, 0.6));
+        System.out.println(ast.wurzel.knotenZuString() + " = " + ast.wurzel.auswerten());
+        return ast;
     }
 }
