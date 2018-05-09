@@ -11,12 +11,14 @@ public class AST
         this.wurzel = wurzel;
     }
     
-    //TODO: Zufall
     public static AST generiereAST() 
     {
-        Random r = new Random();
-        AST ast = new AST(KnotenOperation.generiere(r, 2, 0.6));
+        Aufgabengenerator g = new Aufgabengenerator();
+        AST ast = g.generiereAufgabe();
         System.out.println(ast.wurzel.knotenZuString() + " = " + ast.wurzel.auswerten());
         return ast;
+        
+
+        
     }
 }
