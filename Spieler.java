@@ -1,7 +1,10 @@
 import greenfoot.*;
+import java.util.List;
+
 public class Spieler extends Actor
 {   
     private int leben;
+    private boolean moved;
     public Spieler()
     {
         leben = 3;
@@ -9,33 +12,17 @@ public class Spieler extends Actor
     }
     public void act() 
     {
-        if(Greenfoot.isKeyDown("a") == true)
+        move();       
+        if (moved) 
         {
-            moveLeft();
-        }
-        if(Greenfoot.isKeyDown("d") == true)
-        {
-            if (getX() == 9)
+            List<Gegner> gegner = getWorld().getObjects(Gegner.class);
+            for (Gegner g : gegner) 
             {
-                Greenfoot.setWorld(new Raum2());
+                g.setMoving(true);
             }
-            else
-            {
-                moveRight();
-            }           
+            moved = false;
         }
-        if(Greenfoot.isKeyDown("w") == true)
-        {
-            moveUp();
-        }
-        if(Greenfoot.isKeyDown("s") == true)
-        {
-            moveDown();
-        }
-        /*if(isTouching(Gegner.class) == true)
-        {
-            Aufgabe();
-        }*/
+        
     }
     public void setLeben(int l)
     {
@@ -45,11 +32,38 @@ public class Spieler extends Actor
     {
         return leben;
     }
+    public void move()
+    {
+        if(Greenfoot.isKeyDown("a") == true)
+        {
+            moveLeft();
+        }
+        if(Greenfoot.isKeyDown("d") == true)
+        {
+            if (getX() == 9)
+            {
+                //Greenfoot.setWorld(new Raum2());
+            }
+            else
+            {
+                moveRight();
+            }
+        }
+        if(Greenfoot.isKeyDown("w") == true)
+        {
+            moveUp();
+        }
+        if(Greenfoot.isKeyDown("s") == true)
+        {
+            moveDown();
+        }
+    }
     public void moveLeft()
     {
         if (getOneObjectAtOffset(-1, 0, Hindernis.class) == null)
         {
             setLocation(getX()-1,getY());
+            moved = true;
         }
     }
     public void moveRight()
@@ -57,6 +71,7 @@ public class Spieler extends Actor
         if (getOneObjectAtOffset(1, 0, Hindernis.class) == null)
         {
             setLocation(getX()+1,getY());
+            moved = true;
         }
     }
     public void moveUp()
@@ -64,6 +79,7 @@ public class Spieler extends Actor
         if (getOneObjectAtOffset(0, -1, Hindernis.class) == null)
         {
             setLocation(getX(),getY()-1);
+            moved = true;
         }
     }
     public void moveDown()
@@ -71,6 +87,7 @@ public class Spieler extends Actor
         if (getOneObjectAtOffset(0, 1, Hindernis.class) == null)
         {
             setLocation(getX(),getY()+1);
+            moved = true;
         }
     }
 }

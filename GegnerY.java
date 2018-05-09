@@ -1,9 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 public class GegnerY extends Gegner
 {
-
-    public void act() 
+    public void move() 
     {
         int r = Greenfoot.getRandomNumber(3);
         if(r == 1)

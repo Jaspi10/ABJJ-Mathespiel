@@ -2,12 +2,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Gegner extends Actor
 {
     int leben;
+    boolean moving;
     public Gegner()
     {
         leben = 1;
         getImage().scale(50, 50);
     }
     public void act() 
+    {
+        if (moving)
+        {
+            move();
+            moving = false;
+        }
+    }
+    public void move()
     {
         int r = Greenfoot.getRandomNumber(5);
         if(r == 1)
@@ -26,8 +35,7 @@ public class Gegner extends Actor
         {
             moveDown();
         }
-        
-    }    
+    }
     public void moveLeft()
     {
         if (getOneObjectAtOffset(-1, 0, Hindernis.class) == null)
@@ -55,5 +63,9 @@ public class Gegner extends Actor
         {
             setLocation(getX(),getY()+1);
         }
+    }
+    public void setMoving(boolean m)
+    {
+        moving = m;
     }
 }

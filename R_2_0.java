@@ -1,9 +1,9 @@
 import greenfoot.*;
 
-public class Raum1 extends Ebene1
+public class R_2_0 extends Ebene1
 {
 
-    public Raum1()
+    public R_2_0()
     {            
         prepare();
     }
