@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-public class R_2_1 extends Ebene1
+public class R_2_1 extends Raum
 {
     public R_2_1()
     {

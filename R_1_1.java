@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class R_1_1 extends Ebene1
+public class R_1_1 extends Raum
 {
 
     /**
