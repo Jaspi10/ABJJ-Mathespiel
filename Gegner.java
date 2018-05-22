@@ -68,4 +68,8 @@ public class Gegner extends Actor
     {
         moving = m;
     }
+    public void sterbe() 
+    {
+        getWorld().removeObject(this);
+    }
 }

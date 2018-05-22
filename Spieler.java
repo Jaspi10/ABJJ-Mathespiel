@@ -91,11 +91,28 @@ public class Spieler extends Actor
         Gegner gegner = (Gegner) getOneObjectAtOffset(richtung.dx, richtung.dy, Gegner.class);
         if (gegner != null)
         {
-            //TODO: Kampf mit Gegner
+            kampf(gegner);
             return;
         }
         
         moved = true;
         setLocation(newX, newY);
+    }
+    
+    public void kampf(Gegner gegner)
+    {
+        Aufgabengenerator generator = new Aufgabengenerator();
+        Aufgabe aufgabe = generator.generiereAufgabe();
+        
+        String antwort = Greenfoot.ask(aufgabe.aufgabenText());
+        if (aufgabe.pruefeAntwort(antwort)) 
+        {
+            gegner.sterbe();
+        } else 
+        {
+            //Konsequenz fuer falsche antwort
+        }
+        
+            
     }
 }

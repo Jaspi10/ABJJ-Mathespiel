@@ -1,7 +1,8 @@
 import java.util.Random;
+import java.lang.NumberFormatException;
 
 //Stellt eine arithmetische Aufgabe dar
-public class AST implements Aufgabe 
+public class AST implements Aufgabe
 {
     
     Knoten wurzel;
@@ -24,8 +25,16 @@ public class AST implements Aufgabe
         return wurzel.knotenZuString();
     }
 
-    public boolean pruefeLoesung(double loesung)
+    public boolean pruefeAntwort(String antwortText)
     {
-        return wurzel.auswerten() == loesung;
+        double antwort;
+        try {
+            antwort = Double.parseDouble(antwortText);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+            
+        
+        return wurzel.auswerten() == antwort;
     }
 }
