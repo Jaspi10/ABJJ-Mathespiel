@@ -5,6 +5,7 @@ public class Spieler extends Actor
 {   
     private int leben;
     private boolean moved;
+    private Ebene1 ebene;
     public Spieler()
     {
         leben = 3;
@@ -21,8 +22,11 @@ public class Spieler extends Actor
                 g.setMoving(true);
             }
             moved = false;
-        }
-        
+        }        
+    }
+    public void setEbene(Ebene1 e)
+    {
+        ebene = e;
     }
     public void setLeben(int l)
     {
@@ -34,15 +38,23 @@ public class Spieler extends Actor
     }
     public void move()
     {
+        System.out.println(ebene);
         if(Greenfoot.isKeyDown("a") == true)
         {
-            moveLeft();
+            if (getX() == 0)
+            {
+                ebene.raumwechsel(this, -1, 0);
+            }
+            else
+            {
+                moveLeft();
+            }            
         }
         if(Greenfoot.isKeyDown("d") == true)
         {
             if (getX() == 9)
             {
-                //Greenfoot.setWorld(new Raum2());
+                ebene.raumwechsel(this, 1, 0);
             }
             else
             {
@@ -51,11 +63,25 @@ public class Spieler extends Actor
         }
         if(Greenfoot.isKeyDown("w") == true)
         {
-            moveUp();
+            if (getY() == 0)
+            {
+                ebene.raumwechsel(this, 0, -1);
+            }
+            else
+            {
+                moveUp();
+            }          
         }
         if(Greenfoot.isKeyDown("s") == true)
         {
-            moveDown();
+            if (getY() == 9)
+            {
+                ebene.raumwechsel(this, 0, 1);
+            }
+            else
+            {
+                moveDown();
+            }           
         }
     }
     public void moveLeft()

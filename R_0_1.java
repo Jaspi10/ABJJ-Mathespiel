@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class R_0_1 extends Ebene1
+public class R_0_1 extends Raum
 {
 
     /**
@@ -20,7 +20,8 @@ public class R_0_1 extends Ebene1
     
     void prepare()
     {
-            Wand wand = new Wand();
+        
+    Wand wand = new Wand();
         addObject(wand,0,9);
         Wand wand2 = new Wand();
         addObject(wand2,0,8);

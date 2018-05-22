@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class R_2_0 extends Ebene1
+public class R_2_0 extends Raum
 {
 
     public R_2_0()
@@ -85,9 +85,7 @@ public class R_2_0 extends Ebene1
         Wand wand31 = new Wand();
         addObject(wand31,8,9);
         Wand wand32 = new Wand();
-        addObject(wand32,7,9);
-        Spieler spieler = new Spieler();
-        addObject(spieler,1,8);
+        addObject(wand32,7,9);        
         GegnerX gegnerx = new GegnerX();
         addObject(gegnerx,3,1);
         GegnerY gegnery = new GegnerY();
