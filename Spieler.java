@@ -38,82 +38,64 @@ public class Spieler extends Actor
     }
     public void move()
     {
-        System.out.println(ebene);
-        if(Greenfoot.isKeyDown("a") == true)
+        Richtung richtung = null;
+        
+        String key = Greenfoot.getKey();
+        
+        //Der Spieler hat keine Bewegungstaste gedrueckt
+        if (key == null)
         {
-            if (getX() == 0)
-            {
-                ebene.raumwechsel(this, -1, 0);
-            }
-            else
-            {
-                moveLeft();
-            }            
+            return;
         }
-        if(Greenfoot.isKeyDown("d") == true)
+        
+        switch (key)
         {
-            if (getX() == 9)
-            {
-                ebene.raumwechsel(this, 1, 0);
-            }
-            else
-            {
-                moveRight();
-            }
+            case "w":
+                richtung = Richtung.OBEN;
+                break;
+            case "a":
+                richtung = Richtung.LINKS;
+                break;
+            case "s":
+                richtung = Richtung.UNTEN;
+                break;
+            case "d":
+                richtung = Richtung.RECHTS;
+                break;
         }
-        if(Greenfoot.isKeyDown("w") == true)
+        
+        //Der Spieler hat keine Bewegungstaste gedrueckt
+        if (richtung == null)
         {
-            if (getY() == 0)
-            {
-                ebene.raumwechsel(this, 0, -1);
-            }
-            else
-            {
-                moveUp();
-            }          
+            return;
         }
-        if(Greenfoot.isKeyDown("s") == true)
+        
+        int newX = getX() + richtung.dx;
+        int newY = getY() + richtung.dy;
+        
+        //Pruefe auf Bewegung aus dem Raum
+        if (newX > 9 || newY > 9 || newX < 0 || newY < 0) 
         {
-            if (getY() == 9)
-            {
-                ebene.raumwechsel(this, 0, 1);
-            }
-            else
-            {
-                moveDown();
-            }           
+            ebene.raumwechsel(this, richtung);
+            return;
         }
-    }
-    public void moveLeft()
-    {
-        if (getOneObjectAtOffset(-1, 0, Hindernis.class) == null)
+        
+        //Pruefe auf Hindernis
+        if (getOneObjectAtOffset(richtung.dx, richtung.dy, Hindernis.class) != null)
         {
-            setLocation(getX()-1,getY());
             moved = true;
+            return;
         }
-    }
-    public void moveRight()
-    {
-        if (getOneObjectAtOffset(1, 0, Hindernis.class) == null)
+        
+        //Pruefe auf Gegner
+        Gegner gegner = (Gegner) getOneObjectAtOffset(richtung.dx, richtung.dy, Gegner.class);
+        if (gegner != null)
         {
-            setLocation(getX()+1,getY());
-            moved = true;
+            //TODO: Kampf mit Gegner
+            return;
         }
-    }
-    public void moveUp()
-    {
-        if (getOneObjectAtOffset(0, -1, Hindernis.class) == null)
-        {
-            setLocation(getX(),getY()-1);
-            moved = true;
-        }
-    }
-    public void moveDown()
-    {
-        if (getOneObjectAtOffset(0, 1, Hindernis.class) == null)
-        {
-            setLocation(getX(),getY()+1);
-            moved = true;
-        }
+        
+        moved = true;
+        setLocation(newX, newY);
     }
 }

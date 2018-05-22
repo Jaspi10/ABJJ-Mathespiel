@@ -21,30 +21,30 @@ public class Ebene1 extends World
         rx = 0;
         ry = 2;
     }
-    public void raumwechsel(Spieler s,int dx,int dy)
+    public void raumwechsel(Spieler s, Richtung r)
     {
         int sx = s.getX();
         int sy = s.getY();
         
         raeume[ry][rx].removeObject(s);
-        rx = rx + dx;
-        ry = ry + dy;
+        rx = rx + r.dx;
+        ry = ry + r.dy;
         raeume[ry][rx].addObject(s,sx,sy);
-        if (dx == 1)
+        
+        switch (r) 
         {
-            s.setLocation(0, sy);
-        }
-        if (dx == -1)
-        {
-            s.setLocation(9, sy);
-        }
-        if (dy == 1)
-        {
-            s.setLocation(sx, 0);
-        }
-        if (dy == -1)
-        {
-            s.setLocation(sx, 9);
+            case LINKS:
+                s.setLocation(9, sy);
+                break;
+            case RECHTS:
+                s.setLocation(0, sy);
+                break;
+            case OBEN:
+                s.setLocation(sx, 9);
+                break;
+            case UNTEN:
+                s.setLocation(sx, 0);
+                break;
         }
         Greenfoot.setWorld(raeume[ry][rx]);
     }
