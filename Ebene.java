@@ -1,18 +1,21 @@
 import greenfoot.*;
-public class Ebene1 extends World
+public class Ebene
 {
     Raum[][] raeume = new Raum[3][3];
     int rx,ry;
-    public Ebene1()
+    public Ebene()
     {            
-        super(10, 10, 50);
-        raeume[0][1] = new R_0_1();
-        raeume[1][0] = new R_1_0();
-        raeume[1][1] = new R_1_1();
-        raeume[1][2] = new R_1_2();
-        raeume[2][0] = new R_2_0();
-        raeume[2][1] = new R_2_1();
-        raeume[2][2] = new R_2_2();
+        raeume[0][1] = new Raum(false, true, false, false);
+        raeume[1][0] = new Raum(false, true, false, true);
+        raeume[1][1] = new Raum(true, true, true, true);
+        raeume[1][2] = new Raum(false, true, true, false);
+        raeume[2][0] = new Raum(true, false, false, true);
+        raeume[2][1] = new Raum(true, false, true, true);
+        raeume[2][2] = new Raum(true, false, true, false);
+        
+        
+        raeume[2][0].addGegner(new Gegner());
+        raeume[1][1].addBossTuer();
         
         Spieler s = new Spieler();
         s.setEbene(this);

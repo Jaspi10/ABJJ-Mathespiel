@@ -5,7 +5,8 @@ public class Spieler extends Actor
 {   
     private int leben;
     private boolean moved;
-    private Ebene1 ebene;
+    private Ebene ebene;
+    private boolean hatSchluessel = false;
     public Spieler()
     {
         leben = 3;
@@ -24,7 +25,7 @@ public class Spieler extends Actor
             moved = false;
         }        
     }
-    public void setEbene(Ebene1 e)
+    public void setEbene(Ebene e)
     {
         ebene = e;
     }
@@ -81,9 +82,14 @@ public class Spieler extends Actor
         }
         
         //Pruefe auf Hindernis
-        if (getOneObjectAtOffset(richtung.dx, richtung.dy, Hindernis.class) != null)
+        Hindernis hindernis = (Hindernis) getOneObjectAtOffset(richtung.dx, richtung.dy, Hindernis.class);
+        if (hindernis != null)
         {
             moved = true;
+            if (hindernis.getClass() == Tuer.class && hatSchluessel)
+            {
+                ((Tuer) hindernis).oeffne();
+            }
             return;
         }
         
@@ -107,10 +113,15 @@ public class Spieler extends Actor
         String antwort = Greenfoot.ask(aufgabe.aufgabenText());
         if (aufgabe.pruefeAntwort(antwort)) 
         {
+            hatSchluessel = true;
             gegner.sterbe();
         } else 
         {
-            //Konsequenz fuer falsche antwort
+           leben--;
+           if (leben <= 0)
+           {
+               //Sterben
+           }
         }
         
             

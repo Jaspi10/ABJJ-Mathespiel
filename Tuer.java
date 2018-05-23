@@ -1,19 +1,25 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Tuer here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Tuer extends Hindernis
 {
-    /**
-     * Act - do whatever the Tuer wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    boolean rechts;
+    
+    public Tuer (boolean rechts)
     {
-        // Add your action code here.
-    }    
+        if (rechts)
+        {
+            getImage().mirrorHorizontally();
+        }
+        
+        this.rechts = rechts;
+    }
+    
+    public void oeffne()
+    {
+        int offset = rechts ? -1 : 1;
+        Tuer tuer2 = (Tuer) getOneObjectAtOffset(offset, 0, Tuer.class);
+        
+        getWorld().removeObject(tuer2);
+        getWorld().removeObject(this);
+    }
 }
