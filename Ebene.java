@@ -4,14 +4,15 @@ public class Ebene
     Raum[][] raeume = new Raum[3][3];
     int rx,ry;
     public Ebene()
-    {            
-        raeume[0][1] = new Raum(false, true, false, false);
-        raeume[1][0] = new Raum(false, true, false, true);
-        raeume[1][1] = new Raum(true, true, true, true);
-        raeume[1][2] = new Raum(false, true, true, false);
-        raeume[2][0] = new Raum(true, false, false, true);
-        raeume[2][1] = new Raum(true, false, true, true);
-        raeume[2][2] = new Raum(true, false, true, false);
+    {
+        RaumPool rp = new RaumPool();
+        raeume[0][1] = rp.getRaum(new RaumInfo().requireTuerUnten());
+        raeume[1][0] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerRechts());
+        raeume[1][1] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerRechts().requireTuerLinks().requireTuerOben());
+        raeume[1][2] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerLinks());
+        raeume[2][0] = rp.getRaum(new RaumInfo().requireTuerOben().requireTuerRechts());
+        raeume[2][1] = rp.getRaum(new RaumInfo().requireTuerOben().requireTuerLinks().requireTuerRechts());
+        raeume[2][2] = rp.getRaum(new RaumInfo().requireTuerOben().requireTuerLinks());
         
         
         raeume[2][0].addGegner(new Gegner());
