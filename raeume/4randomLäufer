@@ -1,0 +1,25 @@
+Info tuerOben
+Info tuerUnten
+Info tuerLinks
+Info tuerRechts
+Hindernis 2 2
+Hindernis 2 3
+Hindernis 3 2
+Hindernis 7 6
+Hindernis 7 7
+Hindernis 6 7
+Hindernis 3 7
+Hindernis 2 7
+Hindernis 2 6
+Hindernis 7 2
+Hindernis 6 2
+Hindernis 7 3
+Hindernis 1 8
+Hindernis 7 6
+Hindernis 8 8
+Hindernis 1 1
+Hindernis 8 1
+Gegner 3 3 Gegner
+Gegner 6 6 Gegner
+Gegner 6 3 Gegner
+Gegner 3 6 Gegner

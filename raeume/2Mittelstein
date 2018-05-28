@@ -1,0 +1,14 @@
+Info tuerOben
+Info tuerUnten
+Hindernis 8 1
+Hindernis 1 1
+Hindernis 8 8
+Hindernis 1 8
+Hindernis 4 4
+Hindernis 5 4
+Hindernis 4 5
+Hindernis 5 5
+Gegner 7 1 GegnerX
+Gegner 2 8 GegnerX
+Gegner 8 5 GegnerX
+Gegner 1 4 GegnerX
