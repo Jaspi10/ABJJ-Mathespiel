@@ -226,4 +226,11 @@ public class Raum extends World
 
         return rv;
     }
+    
+    public static Raum laden(String name)
+    {
+        RaumInfo info = RaumInfo.lade(new File(RaumPool.RAEUME_PFAD + "\\" + name));
+        
+        return Raum.laden(info, info);
+    }
 }
