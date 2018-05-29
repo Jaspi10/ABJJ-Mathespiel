@@ -8,7 +8,6 @@ public class Ebene3 extends Ebene
         RaumPool rp = new RaumPool();
         raeume[0][0] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerRechts());
         raeume[0][1] = rp.getRaum(new RaumInfo().requireTuerLinks());
-        raeume[0][2] = rp.getRaum(new RaumInfo().requireTuerUnten());
         raeume[0][3] = rp.getRaum(new RaumInfo().requireTuerRechts());
         raeume[0][4] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerLinks());
         raeume[1][0] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerOben());
@@ -33,6 +32,9 @@ public class Ebene3 extends Ebene
         raeume[4][4] = rp.getRaum(new RaumInfo().requireTuerOben().requireTuerLinks());
         
         raeume[1][2].addBossTuer();
+        
+        raeume[0][2] = Raum.laden("1Bossleer");
+        raeume[0][2].addObject(new Boss(3, "Bosse\\EvilMufflon.png"), 4, 5);
         
         Spieler s = new Spieler();
         s.setEbene(this);

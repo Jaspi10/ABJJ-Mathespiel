@@ -19,7 +19,13 @@ public class KnotenZahl extends Knoten
     @Override
     public String knotenZuString()
     {
-        return ""+ wert;
+        if (wert < 0) 
+        {
+            return "(" + wert + ")";
+        }else
+        {
+            return ""+ wert;
+        }
     }
     
     public static Knoten generiere(Random r, int min, int max) {

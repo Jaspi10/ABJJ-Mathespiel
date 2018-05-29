@@ -118,7 +118,7 @@ public class RaumInfo
                             rv.istStart = true;
                             break;
                         case "boss":
-                            rv.tuerOben = true;
+                            rv.istBoss = true;
                             break;
                     
                     }

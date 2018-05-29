@@ -14,7 +14,6 @@ public class Ebene2 extends Ebene
         raeume[1][1] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerOben().requireTuerRechts().requireTuerLinks());
         raeume[1][2] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerOben().requireTuerRechts().requireTuerLinks());
         raeume[1][3] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerOben().requireTuerLinks());
-        raeume[2][0] = rp.getRaum(new RaumInfo().requireTuerUnten());
         raeume[2][1] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerOben().requireTuerRechts());
         raeume[2][2] = rp.getRaum(new RaumInfo().requireTuerOben().requireTuerRechts().requireTuerLinks());
         raeume[2][3] = rp.getRaum(new RaumInfo().requireTuerUnten().requireTuerOben().requireTuerLinks());
@@ -24,6 +23,9 @@ public class Ebene2 extends Ebene
         raeume[3][3] = rp.getRaum(new RaumInfo().requireTuerOben());
         
         raeume[3][0].addBossTuer();
+        
+        raeume[2][0] = Raum.laden("1Bosswirr");
+        raeume[2][0].addObject(new Boss(3, "Bosse\\Boss2.png"), 4, 5);
         
         Spieler s = new Spieler();
         s.setEbene(this);

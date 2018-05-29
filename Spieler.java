@@ -3,21 +3,26 @@ import java.util.List;
 
 public class Spieler extends Actor
 {
+    private static final String PFAD_SPIELER = "images\\Mufflon.png";
+    private static final GreenfootImage BILD_SPIELER = new GreenfootImage(PFAD_SPIELER);
+    
     private int leben;
     private Lebensanzeige lebensanzeige = new Lebensanzeige();
+    private Schluesselanzeige schluesselanzeige = new Schluesselanzeige();
     private boolean moved;
     private Ebene ebene;
+    private int getoetet = 0;
     private boolean hatSchluessel = false;
     
     public Spieler()
     {
         setLeben(3);
-        getImage().scale(50, 50);
+        setImage(BILD_SPIELER);
     }
 
     public void act() 
     {
-        move();       
+        move();
         if (moved) 
         {
             List<Gegner> gegner = getWorld().getObjects(Gegner.class);
@@ -32,6 +37,7 @@ public class Spieler extends Actor
     protected void addedToWorld(World world) 
     {
         world.addObject(lebensanzeige, 0, 0);
+        world.addObject(schluesselanzeige, 9, 0);
     }
 
     public void setEbene(Ebene e)
@@ -126,16 +132,21 @@ public class Spieler extends Actor
         String antwort = Greenfoot.ask(aufgabe.aufgabenText());
         if (aufgabe.pruefeAntwort(antwort)) 
         {
-            hatSchluessel = true;
-            gegner.sterbe();
+            getoetet++;
+            if (getoetet >= (int) (0.8 * ebene.anzahlGegner()))
+            {
+                schluesselanzeige.update(true);
+                hatSchluessel = true;
+            }
+            gegner.niederlage();
         } else 
         {
             setLeben(getLeben() - 1);
             if (leben <= 0)
             {
-                //Sterben
+                System.out.println("Verloren!");
+                Greenfoot.stop();
             }
         }
-
     }
 }

@@ -41,6 +41,13 @@ public class Gegner extends Actor
     }
     public void moveLeft()
     {
+        Spieler s = (Spieler) getOneObjectAtOffset(-1, 0, Spieler.class);
+        if (s != null)
+        {
+            s.kampf(this);
+            return;
+        }
+        
         if (getOneObjectAtOffset(-1, 0, Hindernis.class) == null)
         {
             setLocation(getX()-1,getY());
@@ -48,6 +55,13 @@ public class Gegner extends Actor
     }
     public void moveRight()
     {
+        Spieler s = (Spieler) getOneObjectAtOffset(1, 0, Spieler.class);
+        if (s != null)
+        {
+            s.kampf(this);
+            return;
+        }
+        
         if (getOneObjectAtOffset(1, 0, Hindernis.class) == null)
         {
             setLocation(getX()+1,getY());
@@ -55,6 +69,13 @@ public class Gegner extends Actor
     }
     public void moveUp()
     {
+        Spieler s = (Spieler) getOneObjectAtOffset(0, -1, Spieler.class);
+        if (s != null)
+        {
+            s.kampf(this);
+            return;
+        }
+        
         if (getOneObjectAtOffset(0, -1, Hindernis.class) == null)
         {
             setLocation(getX(),getY()-1);
@@ -62,6 +83,13 @@ public class Gegner extends Actor
     }
     public void moveDown()
     {
+        Spieler s = (Spieler) getOneObjectAtOffset(0, 1, Spieler.class);
+        if (s != null)
+        {
+            s.kampf(this);
+            return;
+        }
+        
         if (getOneObjectAtOffset(0, 1, Hindernis.class) == null)
         {
             setLocation(getX(),getY()+1);
@@ -71,8 +99,11 @@ public class Gegner extends Actor
     {
         moving = m;
     }
-    public void sterbe() 
+    public void niederlage() 
     {
-        getWorld().removeObject(this);
+        leben--;
+        if (leben <= 0) {
+            getWorld().removeObject(this);
+        }
     }
 }

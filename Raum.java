@@ -12,7 +12,7 @@ public class Raum extends World
     {
         super(10, 10, 50);
         
-        setPaintOrder(Lebensanzeige.class);
+        setPaintOrder(Lebensanzeige.class, Schluesselanzeige.class);
 
         for (int i = 0; i < 10; i++)
         {
@@ -69,6 +69,11 @@ public class Raum extends World
         if (info.tuerUnten) addTuerUnten();
         if (info.tuerLinks) addTuerLinks();
         if (info.tuerRechts) addTuerRechts();
+    }
+    
+    public int anzahlGegner()
+    {
+        return getObjects(Gegner.class).size();
     }
 
     //Random
@@ -174,7 +179,7 @@ public class Raum extends World
                     continue;
                 }
 
-                if (a instanceof Gegner)
+                if (a instanceof Gegner && !(a instanceof Boss))
                 {
                     w.write("Gegner " + a.getX() + " " + a.getY() + " " + a.getClass().getName() + "\n");
                     continue;

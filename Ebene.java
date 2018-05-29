@@ -3,10 +3,8 @@ public abstract class Ebene
 {
     Raum[][] raeume;
     int rx,ry;
-    public Ebene()
-    {
-
-    }
+    private int anzahlGegner = -1;
+    
     public void raumwechsel(Spieler s, Richtung r)
     {
         int sx = s.getX();
@@ -33,5 +31,30 @@ public abstract class Ebene
                 break;
         }
         Greenfoot.setWorld(raeume[ry][rx]);
+    }
+    
+    protected int zaehleGegner()
+    {
+        int rv = 0;
+        
+        for (int i = 0; i < raeume.length; i++)
+        {
+            for (int j = 0; j < raeume[0].length; j++)
+            {
+                rv += raeume[j][i].anzahlGegner();
+            }
+        }
+        
+        return rv;
+    }
+    
+    public int anzahlGegner() 
+    {
+        if (anzahlGegner == -1)
+        {
+            anzahlGegner = zaehleGegner();
+        }
+        
+        return anzahlGegner;
     }
 }

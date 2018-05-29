@@ -20,15 +20,15 @@ public class Aufgabengenerator
        {
            // a/b 
            //b teilt a
-           double b = r.nextInt(10);
-           double quotient = r.nextInt(10);
+           double b = r.nextInt(9) + 1;
+           double quotient = r.nextInt(9) + 1;
            Knoten division = new KnotenOperation(new KnotenZahl(b), new KnotenZahl(b*quotient), EOperation.DIVISION);
            return new AST(division);
        } else 
        {
            //(a*a)+(b*b)
-           double a = r.nextInt(19) + 2;
-           double b = r.nextInt(19) + 2;
+           double a = r.nextInt(13) + 2;
+           double b = r.nextInt(13) + 2;
            Knoten aQuadrat = new KnotenOperation(new KnotenZahl(a), new KnotenZahl(a), EOperation.MULTIPLIKATION);
            Knoten bQuadrat = new KnotenOperation(new KnotenZahl(b), new KnotenZahl(b), EOperation.MULTIPLIKATION);
            Knoten cQuadrat = new KnotenOperation(aQuadrat, bQuadrat, EOperation.ADDITION);
