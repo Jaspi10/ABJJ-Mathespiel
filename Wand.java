@@ -1,12 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Wand extends Hindernis
 {
+    private static final GreenfootImage BILD_WAND = new GreenfootImage("images\\Wand.png");
+    
     public Wand()
     {
-        getImage().scale(50, 50);
+        setImage(BILD_WAND);
     }
-    public void act() 
-    {
-        
-    }    
 }

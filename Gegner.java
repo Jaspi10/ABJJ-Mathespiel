@@ -1,12 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Gegner extends Actor
 {
+    private static final String ORDNER_GEGNER = "images\\gegner";
+    private static final ImagePool POOL_GEGNER = new ImagePool(ORDNER_GEGNER);
+    
     int leben;
     boolean moving;
     public Gegner()
     {
+        setImage(POOL_GEGNER.getImage());
         leben = 1;
-        getImage().scale(50, 50);
     }
     public void act() 
     {

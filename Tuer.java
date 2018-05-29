@@ -4,14 +4,26 @@ public class Tuer extends Hindernis
 {
     boolean rechts;
     
+    private static final GreenfootImage BILD_TUER_LINKS = new GreenfootImage("images\\tür.png");
+    private static final GreenfootImage BILD_TEUR_RECHTS;
+    
+    static {
+        GreenfootImage tmp = new GreenfootImage("images\\tür.png");
+        tmp.mirrorHorizontally();
+        BILD_TEUR_RECHTS = tmp;
+    }
+    
     public Tuer (boolean rechts)
     {
-        if (rechts)
-        {
-            getImage().mirrorHorizontally();
-        }
-        
         this.rechts = rechts;
+        
+        if (rechts) 
+        {
+            setImage(BILD_TEUR_RECHTS);
+        } else 
+        {
+            setImage(BILD_TUER_LINKS);
+        }
     }
     
     public void oeffne()
