@@ -11,6 +11,8 @@ public class Raum extends World
     public Raum()
     {
         super(10, 10, 50);
+        
+        setPaintOrder(Lebensanzeige.class);
 
         for (int i = 0; i < 10; i++)
         {
