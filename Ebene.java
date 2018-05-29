@@ -1,7 +1,7 @@
 import greenfoot.*;
 public abstract class Ebene
 {
-    Raum[][] raeume = new Raum[3][3];
+    Raum[][] raeume;
     int rx,ry;
     public Ebene()
     {

@@ -72,7 +72,7 @@ public class Raum extends World
     }
 
     //Random
-    public Raum addGegner(Gegner gegner)
+    public Raum addSpieler(Spieler spieler)
     {
         while (true) 
         {
@@ -81,7 +81,7 @@ public class Raum extends World
 
             if (getObjectsAt(x, y, null).isEmpty())
             {
-                addObject(gegner, x, y);
+                addObject(spieler, x, y);
                 break;
             }
         }
